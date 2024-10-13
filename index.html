@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon-pumpkin.ico" type="image/x-icon" />
+    <title>Escape Room - Casa do morro</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Patua+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      
+      body {
+        width: 100%;
+        height: 100%;
+        background: rgb(40, 11, 107) url(background.jpeg) no-repeat center
+          center fixed;
+        background-size: cover;
+      }
+
+      main {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column nowrap;
+        gap: 20px;
+      }
+
+      h1 {
+        font-family: "Lilita One", sans-serif;
+        font-size: 3em;
+        color: #f88112;
+        text-shadow: 0px 0px 5px black;
+      }
+
+      h2 {
+        font-family: "Patua One", serif;
+        font-size: 1.8em;
+        margin-top: -25px;
+        color: #f88112;
+        text-shadow: 0px 0px 5px black;
+      }
+
+      p {
+        font-family: "VT323", monospace;
+        color: white;
+        font-size: 1.5em;
+        text-align: center;
+      }
+
+      .input-container {
+        display: flex;
+        gap: 8px;
+      }
+
+      input[type="number"] {
+        width: 25px;
+        padding: 10px;
+        font-family: "VT323", monospace;
+        font-size: 24px;
+        text-align: center;
+        text-decoration: none;
+        border: 2px solid #ED1543;
+        background-color: rgba(255, 255, 255, 0.050);
+        color: white;
+        border-radius: 4px;
+        outline: none;
+      }
+
+      input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      input[type="number"]:focus {
+        border-color: #2b15ed;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 18px;
+        color: white;
+        background-color: #ED1543;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #2b15ed;
+      }
+
+      .error {
+        color: #ED1543;
+        background-color: white;
+
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <h1>Escape Room</h1>
+        <h2>A lenda da casa do morro</h2>
+        <p>Digite os números encontrados na sequência correta.</p>
+        <div class="input-container">
+          <input type="number" id="num1" maxlength="2" required />
+          <input type="number" id="num2" maxlength="2" required />
+          <input type="number" id="num3" maxlength="2" required />
+          <input type="number" id="num4" maxlength="2" required />
+          <input type="number" id="num5" maxlength="2" required />
+          <input type="number" id="num6" maxlength="2" required />
+        </div>
+        <button id="submitButton">Enviar</button>
+        <p id="errorMessage" class="error"></p>
+      </div>
+    </main>
+  </body>
+</html>
+<script>
+  document
+    .getElementById("submitButton")
+    .addEventListener("click", function () {
+      const num1 = document.getElementById("num1").value;
+      const num2 = document.getElementById("num2").value;
+      const num3 = document.getElementById("num3").value;
+      const num4 = document.getElementById("num4").value;
+      const num5 = document.getElementById("num5").value;
+      const num6 = document.getElementById("num6").value;
+
+      const correctSequence = ["4", "8", "15", "16", "23", "42"];
+
+      const userSequence = [num1, num2, num3, num4, num5, num6];
+
+      if (JSON.stringify(userSequence) === JSON.stringify(correctSequence)) {
+        window.location.href = "sucesso.html"; // Redirecionar para a página de sucesso
+      } else {
+        document.getElementById("errorMessage").textContent =
+          "Sequência incorreta. Tente novamente!";
+      }
+    });
+  8;
+</script>
